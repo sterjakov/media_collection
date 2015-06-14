@@ -1,0 +1,60 @@
+= form_for(@media_collection, html: { multipart: true }) do |f|
+
+  = render partial: 'errors/index', locals: { model: @media_collection }
+
+  .field
+    = f.label :name, 'Название коллекции'
+    %br/
+    = f.text_field :name, class: 'form-control'
+  .field
+    = f.label :available, 'Кому будет доступна коллекция?'
+    %br/
+    = f.select :available, MediaCollection::AVAILABLE, {}, class: 'form-control'
+
+  %br
+
+  %div{:role => "tabpanel"}
+    / Nav tabs
+    %ul.nav.nav-tabs{:role => "tablist"}
+      %li.active{:role => "presentation"}
+        %a{"aria-controls" => "home", "data-toggle" => "tab", :href => "#photos", :role => "tab"} Мои фотографии
+      %li{:role => "presentation"}
+        %a{"aria-controls" => "profile", "data-toggle" => "tab", :href => "#links", :role => "tab"} Мои ссылки
+    / Tab panes
+    .tab-content
+      #photos.tab-pane.active{:role => "tabpanel"}
+
+        %br
+
+        = f.fields_for :images do |builder, image|
+
+          = render 'image_fields', f: builder
+
+        = link_to_add_fields "Добавить фотографию", f, :images
+        .clearfix
+
+        %hr
+
+      #links.tab-pane{:role => "tabpanel"}
+
+        %br
+
+        = f.fields_for :urls do |builder|
+
+          = render 'url_fields', f: builder
+
+        = link_to_add_fields "Добавить ссылку", f, :urls
+        .clearfix
+
+        %hr
+
+
+
+
+
+
+
+  .actions
+    = f.submit class: 'btn btn-success btn-lg', value: 'Сохранить коллекцию!'
+
+  %br

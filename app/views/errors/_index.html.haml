@@ -1,0 +1,11 @@
+- if model.errors.any?
+
+  %br
+  .alert.alert-danger
+    %p
+      %strong
+        Обнаружено ошибок:
+        = model.errors.count
+    %ul
+      - model.errors.full_messages.each do |message|
+        %li= message

@@ -1,0 +1,21 @@
+/*
+  =require twitter-bootstrap-static/bootstrap
+
+  Use Font Awesome icons (default)
+  To use Glyphicons sprites instead of Font Awesome, replace with ""
+  =require twitter-bootstrap-static/fontawesome
+  */
+
+.field {
+  margin-top: 15px;
+}
+
+.actions {
+  margin-top: 25px;
+}
+
+.field_with_errors {
+  display: inline;
+  border-bottom-color: red;
+}
+

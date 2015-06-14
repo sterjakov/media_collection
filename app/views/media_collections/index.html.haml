@@ -1,0 +1,37 @@
+- content_for 'operations' do
+  .well.sidebar-nav
+    %ul.nav.nav-pills.nav-stacked
+      %li.nav-header.text-muted Меню:
+      %br
+      = link_to new_media_collection_path, class: 'btn btn-primary btn-lg btn-block' do
+        %i.fa.fa-plus-circle
+        Создать новую коллекцию
+
+
+
+%h1 Мои медиа коллекции
+
+- if @media_collections.count > 0
+
+  %table.table.table-striped
+    %thead
+      %tr
+        %th Название
+        %th Доступно
+        %th.text-right
+    %tbody
+      - @media_collections.each do |media_collection|
+        %tr
+          %td
+            = link_to media_collection.name, media_collection_path(media_collection)
+          %td= media_collection.available_human
+          %td.text-right
+            = link_to 'Смотреть', media_collection_path(media_collection), class: 'btn btn-xs btn-default'
+            = link_to 'Править', edit_media_collection_path(media_collection), class: 'btn btn-xs btn-default'
+            = link_to 'Удалить', media_collection, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger'
+  %br/
+
+- else
+
+  %p.text-muted
+    Пока что у вас нет ни одной медиа коллекции.

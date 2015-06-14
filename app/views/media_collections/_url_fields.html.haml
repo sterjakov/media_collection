@@ -1,0 +1,21 @@
+.well
+
+  .col-lg-4
+
+    .field
+      = f.label :name, 'Название'
+      %br/
+      = f.text_field :name, class: 'form-control'
+
+  .col-lg-6
+
+    .field
+      = f.label :url, 'Адрес'
+      %br/
+      = f.text_field :url, class: 'form-control'
+
+  .col-lg-2
+    %a.btn.btn-danger.btn-xs.remove_field{ href: '#remove_field', style: 'margin-top: 40px;' }
+      Удалить
+    = f.hidden_field :_destroy, class: 'for_remove'
+  .clearfix

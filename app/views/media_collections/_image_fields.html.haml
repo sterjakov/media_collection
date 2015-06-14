@@ -1,0 +1,22 @@
+.well
+
+  .field
+    = f.label :name, 'Название фотографии'
+    %br/
+    = f.text_field :name, class: 'form-control'
+
+  .field
+    = f.label :image, 'Фотография'
+    %br/
+    .pull-left
+      = f.file_field :image
+    .pull-right
+      %a.btn.btn-danger.btn-xs.remove_field{ href: '#remove_field' }
+        Удалить
+      = f.hidden_field :_destroy, class: 'for_remove'
+    .clearfix
+
+  %br
+
+  - if f.object.id.present?
+    = image_tag safely_url(f.object.id), style: 'max-width: 100%;'

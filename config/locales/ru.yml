@@ -1,0 +1,18 @@
+ru:
+  activerecord:
+    models:
+      user: Пользователь
+    attributes:
+      media_collection:
+        user_id: "#id пользователя"
+        name: "имя"
+        available: "доступность"
+      urls:
+        url: 'ссылка'
+      user:
+        email: 'E-mail'
+        password: 'Пароль'
+        password_confirmation: 'Повторный пароль'
+        remember_me: 'Запомнить меня'
+
+      # will translate User attribute "login" as "Handle"
